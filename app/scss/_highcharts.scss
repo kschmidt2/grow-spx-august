@@ -205,8 +205,12 @@
   /* Series options */
   /* Default colors */
   .highcharts-color-0 {
-    fill: $green-primary;
-    stroke: $green-primary;
+    fill: $green-secondary-3;
+    stroke: $green-secondary-3;
+    &:nth-child(8) {
+      fill: $green-secondary-5;
+      stroke: $green-secondary-5;
+    }
   }
   
   .highcharts-color-1 {

@@ -12,13 +12,13 @@ Highcharts.setOptions({
     }
 });
 
-let chartId = document.getElementById("chart-container");
+let chartIdSpxAugust = document.getElementById("chart-container-spx-august");
 
 // checks for the chart ID and displays a backup image if the browser can't find it
 setTimeout(function() {
-    if(chartId.innerHTML === "") {
+    if(chartIdSpxAugust.innerHTML === "") {
         // console.log('noId');
-        let chartArea = document.getElementsByClassName("chart-area");
+        let chartArea = document.getElementsByClassName("chart-area-spx-august");
         for(var i = 0; i < chartArea.length; i++) {
             chartArea[i].style.display = "none";
         } 
@@ -30,7 +30,7 @@ setTimeout(function() {
 },500);
 
 function drawHighcharts() {
-    Highcharts.chart(chartId, {
+    Highcharts.chart(chartIdSpxAugust, {
         chart: {
             type: 'bar',
             styledMode: true,
@@ -43,12 +43,16 @@ function drawHighcharts() {
             text: null
         },
         data: {
-            googleSpreadsheetKey: '1YOKb5l2VM4aAB2r20N_1aT_1vEajYrP3U-U3A6lZbC0'
+            googleSpreadsheetKey: '1q6IG5fWLgeFbQnwFfONdyBNqHFbdBr-cqsv49iVqN5Y'
         },
         // for bar charts only
         plotOptions: {
             series: {
-                groupPadding: 0.1
+                groupPadding: 0.1,
+                dataLabels: {
+                    enabled: true,
+                    format: '{y}%'
+                }
             } 
         },
         // for line charts only
@@ -69,11 +73,7 @@ function drawHighcharts() {
         //     }
         // },
         legend: {
-            align: 'right',
-            symbolRadius: 0,
-            verticalAlign: 'top',
-            x: 10,
-            itemMarginTop: -10
+            enabled: false
         },
         xAxis: {
             labels: {
@@ -81,7 +81,8 @@ function drawHighcharts() {
                     whiteSpace: 'nowrap'
                 }
             },
-            tickLength: 5,
+            type: 'category',
+            tickLength: 5
             // edits xAxis ticks
             // dateTimeLabelFormats: {
             //     week: '%b. %e',
@@ -94,6 +95,7 @@ function drawHighcharts() {
                 useHTML: true,
                 overflow: 'allow'
             },
+            visible: false
             // adds commas to thousands
             // formatter: function () {
             //     return Highcharts.numberFormat(this.value,0,'.',',');
